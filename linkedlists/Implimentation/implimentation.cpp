@@ -1,57 +1,63 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node {
-    public:
-        int num;
-        Node* next;
-
+class Node
+{
+public:
+    int num;
+    Node *next;
 };
 
-class linkedListDemo {
+class linkedListDemo
+{
 private:
-        
-    
-public:
     Node *head, *tail;
     int length = 0;
-    linkedListDemo() {
+
+public:
+    linkedListDemo()
+    {
         head = NULL;
         tail = NULL;
     }
 
-    void push(int num) {
+    void push(int num)
+    {
 
-        Node* temp = new Node();
+        Node *temp = new Node();
         temp->num = num;
         temp->next = NULL;
 
-
-        if (head == NULL) {
+        if (head == NULL)
+        {
             head = temp;
             tail = temp;
-        } else {
+        }
+        else
+        {
             tail->next = temp;
             tail = temp;
         }
         length += 1;
-
     }
 
-    int remove(int num) {
-        
+    int remove(int num)
+    {
 
-        if (head->num == num) {
+        if (head->num == num)
+        {
             head = head->next;
             length--;
             return 1;
         }
 
-        Node* itr = head;
-        
-        while (itr != NULL) {
-            Node* next = itr->next;
-            if (next->num == num) {
+        Node *itr = head;
+
+        while (itr != NULL)
+        {
+            Node *next = itr->next;
+            if (next->num == num)
+            {
                 itr->next = next->next;
                 length--;
                 return 1;
@@ -61,26 +67,27 @@ public:
         return 0;
     }
 
-    
-};
+    void print()
+    {
 
-void printLinkedList(Node* head) {
+        Node *itr = head;
 
-    Node* itr = head;
-    
+        while (itr != NULL)
+        {
+            cout << itr->num << " -->";
+            itr = itr->next;
+        }
 
-    while (itr != NULL) {
-        cout << itr->num << " -->";
-        itr = itr->next;
+        cout << endl;
     }
 
-    cout << endl;
-}
+    int getLength() {
+        return length;
+    }
+};
 
-
-
-
-int main() {
+int main()
+{
 
     linkedListDemo l;
 
@@ -92,13 +99,10 @@ int main() {
     l.remove(5);
     l.remove(3);
 
+    l.push(45);
+    l.push(50);
 
-
-    printLinkedList(l.head);
-
-
-
+    l.print();
+    cout << l.getLength() << endl;
     return 0;
 }
-
-
