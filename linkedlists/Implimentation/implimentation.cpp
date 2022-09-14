@@ -14,6 +14,7 @@ private:
     
 public:
     Node *head, *tail;
+    int length = 0;
     linkedListDemo() {
         head = NULL;
         tail = NULL;
@@ -33,7 +34,31 @@ public:
             tail->next = temp;
             tail = temp;
         }
+        length += 1;
 
+    }
+
+    int remove(int num) {
+        
+
+        if (head->num == num) {
+            head = head->next;
+            length--;
+            return 1;
+        }
+
+        Node* itr = head;
+        
+        while (itr != NULL) {
+            Node* next = itr->next;
+            if (next->num == num) {
+                itr->next = next->next;
+                length--;
+                return 1;
+            }
+        }
+
+        return 0;
     }
 
     
@@ -42,6 +67,7 @@ public:
 void printLinkedList(Node* head) {
 
     Node* itr = head;
+    
 
     while (itr != NULL) {
         cout << itr->num << " -->";
@@ -62,6 +88,9 @@ int main() {
     l.push(3);
     l.push(5);
 
+    l.remove(2);
+    l.remove(5);
+    l.remove(3);
 
 
 
