@@ -62,6 +62,7 @@ class LL:
                     self.length += 1
                     return
                 prev = itr
+                
                 itr = itr.next
 
     def print(self):
