@@ -1,15 +1,17 @@
 
 def main():
-    arr = [23, 12, 54, 23, -1, 32, 43, 43, 12, 43]
-    sortedArr = mergeSort(arr)
-
-    print(sortedArr)
+    arr1 = [23, 12, 54, 23, -1, 32, 43, 43, 12, 43]
+    arr2 = []
+    arr3 = [0]
+    print(mergeSort(arr1))
+    print(mergeSort(arr2))
+    print(mergeSort(arr3))
 
 
 def mergeSort(arr):
     n = len(arr)
     if n < 2:
-        return
+        return arr
     mid = n // 2
     left = arr[0: mid]
     right = arr[mid: n]
